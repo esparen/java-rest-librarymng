@@ -17,7 +17,7 @@ public class LivroServiceImpl implements LivroService {
     }
 
     @Override
-    public LivroEntity criarLivro(LivroDto livro) throws Exception {
+    public LivroEntity createLivro(LivroDto livro) throws Exception {
         log.info("Criando livro -> \n{}\n", livro);
         LivroEntity newLivroEntity = new LivroEntity();
         newLivroEntity.setAnoPublicacao(livro.getAnoPublicacao());

@@ -4,5 +4,5 @@ import br.com.fullstack.education.librarymng.controller.dto.LivroDto;
 import br.com.fullstack.education.librarymng.entity.LivroEntity;
 
 public interface LivroService {
-    LivroEntity criarLivro(LivroDto livro) throws Exception;
+    LivroEntity createLivro(LivroDto livro) throws Exception;
 }
