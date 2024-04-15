@@ -23,8 +23,8 @@ public class LivroServiceImpl implements LivroService {
         newLivroEntity.setAnoPublicacao(livro.getAnoPublicacao());
         newLivroEntity.setAutor(livro.getAutor());
         newLivroEntity.setTitulo(livro.getTitulo());
-        //livroRepository.save(newLivroEntity);
-        log.info("Criando livro -> Salvo com sucesso, mas sem salvar no DB");
+        livroRepository.save(newLivroEntity);
+        log.info("Criando livro -> Salvo com sucesso");
         return newLivroEntity;
     }
 }
