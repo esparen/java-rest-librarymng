@@ -11,4 +11,6 @@ public interface BibliotecarioService {
     BibliotecarioEntity createBibliotecario(BibliotecarioDto livro) throws Exception;
 
     List<BibliotecarioEntity> getAllBibliotecarios();
+
+    void deleteById(Long id);
 }
