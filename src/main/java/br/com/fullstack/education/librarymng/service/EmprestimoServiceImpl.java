@@ -1,6 +1,7 @@
 package br.com.fullstack.education.librarymng.service;
 
 import br.com.fullstack.education.librarymng.entity.EmprestimoEntity;
+import br.com.fullstack.education.librarymng.exception.NotFoundException;
 import br.com.fullstack.education.librarymng.repository.EmprestimoRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -27,5 +28,14 @@ public class EmprestimoServiceImpl implements EmprestimoService {
     public List<EmprestimoEntity> getAllEmprestimos() {
         log.info("Listando todos os emprestimos");
         return emprestimoRepository.findAll();
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        emprestimoRepository.delete(
+                emprestimoRepository.findById(id).orElseThrow(
+                        ()-> new NotFoundException("Emprestimo com id ["+ id +"] não encontrado.")
+                )
+        );
     }
 }
