@@ -6,6 +6,8 @@ import br.com.fullstack.education.librarymng.repository.LivroRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Slf4j
 public class LivroServiceImpl implements LivroService {
@@ -26,5 +28,11 @@ public class LivroServiceImpl implements LivroService {
         livroRepository.save(newLivroEntity);
         log.info("Criando livro -> Salvo com sucesso");
         return newLivroEntity;
+    }
+
+    @Override
+    public List<LivroEntity> getAllLivros() {
+        log.info("Listando todos os Livros");
+        return livroRepository.findAll();
     }
 }
