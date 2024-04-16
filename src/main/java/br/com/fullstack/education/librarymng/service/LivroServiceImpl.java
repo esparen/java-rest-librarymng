@@ -2,6 +2,7 @@ package br.com.fullstack.education.librarymng.service;
 
 import br.com.fullstack.education.librarymng.controller.dto.LivroDto;
 import br.com.fullstack.education.librarymng.entity.LivroEntity;
+import br.com.fullstack.education.librarymng.exception.NotFoundException;
 import br.com.fullstack.education.librarymng.repository.LivroRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -34,5 +35,14 @@ public class LivroServiceImpl implements LivroService {
     public List<LivroEntity> getAllLivros() {
         log.info("Listando todos os Livros");
         return livroRepository.findAll();
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        livroRepository.delete(
+                livroRepository.findById(id).orElseThrow(
+                        ()-> new NotFoundException("Livro com id ["+ id +"] não encontrado.")
+                )
+        );
     }
 }

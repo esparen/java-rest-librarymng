@@ -9,4 +9,6 @@ public interface VisitanteService {
     VisitanteEntity createVisitante(VisitanteDto visitante) throws Exception;
 
     List<VisitanteEntity> getAllVisitantes();
+
+    void deleteById(Long id);
 }

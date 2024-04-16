@@ -9,4 +9,6 @@ public interface LivroService {
     LivroEntity createLivro(LivroDto livro) throws Exception;
 
     List<LivroEntity> getAllLivros();
+
+    void deleteById(Long id);
 }

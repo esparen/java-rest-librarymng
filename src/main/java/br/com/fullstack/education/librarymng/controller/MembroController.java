@@ -34,4 +34,10 @@ public class MembroController {
     public ResponseEntity<List<MembroEntity>> getAllMembros(){
         return ResponseEntity.status(HttpStatus.OK).body(membroService.getAllMembros());
     }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<Void> deleteById(@PathVariable Long id) {
+        membroService.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
 }

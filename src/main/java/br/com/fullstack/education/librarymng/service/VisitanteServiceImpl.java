@@ -2,6 +2,7 @@ package br.com.fullstack.education.librarymng.service;
 
 import br.com.fullstack.education.librarymng.controller.dto.VisitanteDto;
 import br.com.fullstack.education.librarymng.entity.VisitanteEntity;
+import br.com.fullstack.education.librarymng.exception.NotFoundException;
 import br.com.fullstack.education.librarymng.repository.VisitanteRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -32,5 +33,14 @@ public class VisitanteServiceImpl implements VisitanteService{
     public List<VisitanteEntity> getAllVisitantes() {
         log.info("Listando todos os Visitantes");
         return visitanteRepository.findAll();
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        visitanteRepository.delete(
+                visitanteRepository.findById(id).orElseThrow(
+                        ()-> new NotFoundException("Visitante com id ["+ id +"] não encontrado.")
+                )
+        );
     }
 }

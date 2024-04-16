@@ -37,4 +37,10 @@ public class LivroController {
         return ResponseEntity.status(HttpStatus.OK).body(livroService.getAllLivros());
     }
 
+    @DeleteMapping("{id}")
+    public ResponseEntity<Void> deleteById(@PathVariable Long id) {
+        livroService.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }

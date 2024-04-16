@@ -2,6 +2,7 @@ package br.com.fullstack.education.librarymng.service;
 
 import br.com.fullstack.education.librarymng.controller.dto.BibliotecarioDto;
 import br.com.fullstack.education.librarymng.entity.BibliotecarioEntity;
+import br.com.fullstack.education.librarymng.exception.NotFoundException;
 import br.com.fullstack.education.librarymng.repository.BibliotecarioRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -34,5 +35,14 @@ public class BibliotecarioServiceImpl implements BibliotecarioService {
     public List<BibliotecarioEntity> getAllBibliotecarios() {
         log.info("Listando todos os bibliotecarios");
         return bibliotecarioRepository.findAll();
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        bibliotecarioRepository.delete(
+                bibliotecarioRepository.findById(id).orElseThrow(
+                        ()-> new NotFoundException("Bibliotecario com id ["+ id +"] não encontrado.")
+                )
+        );
     }
 }

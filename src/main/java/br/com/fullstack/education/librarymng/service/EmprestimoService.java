@@ -8,4 +8,6 @@ public interface EmprestimoService {
     EmprestimoEntity createEmprestimo(EmprestimoEntity emprestimoEntity) throws Exception;
 
     List<EmprestimoEntity> getAllEmprestimos();
+
+    void deleteById(Long id);
 }
