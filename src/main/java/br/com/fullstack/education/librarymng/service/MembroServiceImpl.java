@@ -6,6 +6,8 @@ import br.com.fullstack.education.librarymng.repository.MembroRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Slf4j
 public class MembroServiceImpl implements MembroService{
@@ -26,5 +28,11 @@ public class MembroServiceImpl implements MembroService{
         membroRepository.save(newMembro);
         log.info("Criando Membro -> Sucesso");
         return newMembro;
+    }
+
+    @Override
+    public List<MembroEntity> getAllMembros() {
+        log.info("Listando todos os Membros");
+        return membroRepository.findAll();
     }
 }
