@@ -2,6 +2,7 @@ package br.com.fullstack.education.librarymng.service;
 
 import br.com.fullstack.education.librarymng.controller.dto.MembroDto;
 import br.com.fullstack.education.librarymng.entity.MembroEntity;
+import br.com.fullstack.education.librarymng.exception.NotFoundException;
 import br.com.fullstack.education.librarymng.repository.MembroRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -34,5 +35,14 @@ public class MembroServiceImpl implements MembroService{
     public List<MembroEntity> getAllMembros() {
         log.info("Listando todos os Membros");
         return membroRepository.findAll();
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        membroRepository.delete(
+                membroRepository.findById(id).orElseThrow(
+                        ()-> new NotFoundException("Membro com id ["+ id +"] não encontrado.")
+                )
+        );
     }
 }

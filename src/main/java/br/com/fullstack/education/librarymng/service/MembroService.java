@@ -9,4 +9,6 @@ public interface MembroService {
     MembroEntity createMembro(MembroDto membro) throws Exception;
 
     List<MembroEntity> getAllMembros();
+
+    void deleteById(Long id);
 }
