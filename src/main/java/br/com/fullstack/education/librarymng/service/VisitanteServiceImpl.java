@@ -1,12 +1,12 @@
 package br.com.fullstack.education.librarymng.service;
 
 import br.com.fullstack.education.librarymng.controller.dto.VisitanteDto;
-import br.com.fullstack.education.librarymng.entity.MembroEntity;
 import br.com.fullstack.education.librarymng.entity.VisitanteEntity;
 import br.com.fullstack.education.librarymng.repository.VisitanteRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @Slf4j
@@ -26,5 +26,11 @@ public class VisitanteServiceImpl implements VisitanteService{
         visitanteRepository.save(newVisitante);
         log.info("Criando Visitante -> Sucesso");
         return newVisitante;
-    };
+    }
+
+    @Override
+    public List<VisitanteEntity> getAllVisitantes() {
+        log.info("Listando todos os Visitantes");
+        return visitanteRepository.findAll();
+    }
 }

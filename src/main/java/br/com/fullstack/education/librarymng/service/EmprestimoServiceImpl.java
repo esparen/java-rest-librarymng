@@ -5,6 +5,8 @@ import br.com.fullstack.education.librarymng.repository.EmprestimoRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Slf4j
 public class EmprestimoServiceImpl implements EmprestimoService {
@@ -19,5 +21,11 @@ public class EmprestimoServiceImpl implements EmprestimoService {
         emprestimoRepository.save(emprestimo);
         log.info("Criando Emprestimo -> Salvo com sucesso");
         return emprestimo;
+    }
+
+    @Override
+    public List<EmprestimoEntity> getAllEmprestimos() {
+        log.info("Listando todos os emprestimos");
+        return emprestimoRepository.findAll();
     }
 }
