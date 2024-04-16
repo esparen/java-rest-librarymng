@@ -21,7 +21,7 @@ public class BibliotecarioServiceImpl implements BibliotecarioService {
 
     @Override
     public BibliotecarioEntity createBibliotecario (BibliotecarioDto bibliotecario) throws Exception {
-        log.info("Criando livro -> \n{}\n", bibliotecario);
+        log.info("Criando Bibliotecario -> \n{}\n", bibliotecario);
         BibliotecarioEntity newBibliotecario = new BibliotecarioEntity();
         newBibliotecario.setEmail(bibliotecario.getEmail());
         newBibliotecario.setNome(bibliotecario.getNome());

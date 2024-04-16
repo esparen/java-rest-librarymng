@@ -18,7 +18,7 @@ public class MembroServiceImpl implements MembroService{
 
     @Override
     public MembroEntity createMembro(MembroDto membro) throws Exception {
-        log.info("Criando membro");
+        log.info("Criando membro -> {}", membro.toString());
         MembroEntity newMembro = new MembroEntity();
         newMembro.setEndereco(membro.getEndereco());
         newMembro.setNome(membro.getNome());
