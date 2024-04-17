@@ -45,4 +45,16 @@ public class BibliotecarioServiceImpl implements BibliotecarioService {
                 )
         );
     }
+
+    @Override
+    public BibliotecarioEntity updateById(BibliotecarioEntity bibliotecario) {
+        int updateResponse =  bibliotecarioRepository.updateBibliotecarioEntity(
+                bibliotecario.getId(),
+                bibliotecario.getNome(),
+                bibliotecario.getEmail(),
+                bibliotecario.getSenha()
+        );
+        log.info("Bibliotecario atualizado com sucesso. Response: {}", updateResponse);
+        return bibliotecario;
+    }
 }

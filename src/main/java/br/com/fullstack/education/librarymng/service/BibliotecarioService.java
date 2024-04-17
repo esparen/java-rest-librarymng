@@ -13,4 +13,6 @@ public interface BibliotecarioService {
     List<BibliotecarioEntity> getAllBibliotecarios();
 
     void deleteById(Long id);
+
+    BibliotecarioEntity updateById(BibliotecarioEntity bibliotecario);
 }

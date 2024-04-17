@@ -37,4 +37,10 @@ public class BibliotecarioController {
         bibliotecarioServiceImpl.deleteById(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PutMapping
+    public ResponseEntity<BibliotecarioEntity> updateBibliotecario(@RequestBody BibliotecarioEntity bibliotecario) throws Exception {
+        BibliotecarioEntity updatedBibliotecario = bibliotecarioServiceImpl.updateById(bibliotecario);
+        return ResponseEntity.status(HttpStatus.OK).body(updatedBibliotecario);
+    }
 }
