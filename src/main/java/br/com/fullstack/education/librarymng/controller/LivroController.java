@@ -43,4 +43,9 @@ public class LivroController {
         return ResponseEntity.noContent().build();
     }
 
+    @PutMapping
+    public ResponseEntity<LivroEntity> updateEmprestimoById(@RequestBody LivroEntity livro){
+        LivroEntity updatedLivro = livroService.updateById(livro);
+        return ResponseEntity.status(HttpStatus.OK).body(updatedLivro);
+    }
 }

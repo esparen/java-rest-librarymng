@@ -19,5 +19,4 @@ public class LivroEntity implements Serializable {
     private String autor;
     private int anoPublicacao;
 
-    //private Emprestimos
 }
