@@ -16,4 +16,5 @@ public class MembroEntity implements Serializable {
     private String nome;
     private String endereco;
     private String telefone;
+
 }

@@ -1,6 +1,7 @@
 package br.com.fullstack.education.librarymng.controller;
 
 import br.com.fullstack.education.librarymng.controller.dto.MembroDto;
+import br.com.fullstack.education.librarymng.entity.LivroEntity;
 import br.com.fullstack.education.librarymng.entity.MembroEntity;
 import br.com.fullstack.education.librarymng.service.MembroServiceImpl;
 import lombok.RequiredArgsConstructor;
@@ -39,5 +40,11 @@ public class MembroController {
     public ResponseEntity<Void> deleteById(@PathVariable Long id) {
         membroService.deleteById(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping
+    public ResponseEntity<MembroEntity> updateMembroById(@RequestBody MembroEntity membro){
+        MembroEntity updatedMembro = membroService.updateById(membro);
+        return ResponseEntity.status(HttpStatus.OK).body(updatedMembro);
     }
 }

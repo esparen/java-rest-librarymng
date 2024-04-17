@@ -11,4 +11,6 @@ public interface MembroService {
     List<MembroEntity> getAllMembros();
 
     void deleteById(Long id);
+
+    MembroEntity updateById(MembroEntity membro);
 }
