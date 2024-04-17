@@ -44,7 +44,7 @@ public class LivroController {
     }
 
     @PutMapping
-    public ResponseEntity<LivroEntity> updateEmprestimoById(@RequestBody LivroEntity livro){
+    public ResponseEntity<LivroEntity> updateLivroById(@RequestBody LivroEntity livro){
         LivroEntity updatedLivro = livroService.updateById(livro);
         return ResponseEntity.status(HttpStatus.OK).body(updatedLivro);
     }
