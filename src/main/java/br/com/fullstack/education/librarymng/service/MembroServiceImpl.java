@@ -45,4 +45,16 @@ public class MembroServiceImpl implements MembroService{
                 )
         );
     }
+    @Override
+    public MembroEntity updateById(MembroEntity membro) {
+        log.info("Atualizando membro -> \n{}\n", membro);
+        int updateResponse = membroRepository.updateMembroEntitiy(
+                membro.getId(),
+                membro.getNome(),
+                membro.getEndereco(),
+                membro.getTelefone()
+        );
+        log.info("Atualizando membro -> Salvo com sucesso");
+        return membro;
+    }
 }

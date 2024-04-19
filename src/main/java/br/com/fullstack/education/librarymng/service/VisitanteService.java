@@ -11,4 +11,6 @@ public interface VisitanteService {
     List<VisitanteEntity> getAllVisitantes();
 
     void deleteById(Long id);
+
+    int updateById(VisitanteEntity visitante);
 }

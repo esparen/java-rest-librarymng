@@ -45,4 +45,17 @@ public class LivroServiceImpl implements LivroService {
                 )
         );
     }
+
+    @Override
+    public LivroEntity updateById(LivroEntity livro) {
+        log.info("Atualizando livro -> \n{}\n", livro);
+        int updateResponse = livroRepository.updateLivroEntitiy(
+                livro.getId(),
+                livro.getTitulo(),
+                livro.getAutor(),
+                livro.getAnoPublicacao()
+        );
+        log.info("Atualizando livro -> Salvo com sucesso");
+        return livro;
+    }
 }

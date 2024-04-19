@@ -21,7 +21,7 @@ import java.util.List;
 @Slf4j
 @RequestMapping("/emprestimos")
 public class EmprestimoController {
-    private final EmprestimoServiceImpl emprestimoService;
+    private final EmprestimoServiceImpl emprestimoServiceImpl;
     private final MembroRepository membroRepository;
     private final LivroRepository livroRepository;
 
@@ -42,18 +42,24 @@ public class EmprestimoController {
         newEmprestimo.setLivro(targetLivro);
         newEmprestimo.setDataEmprestimo(emprestimoRequest.getDataEmprestimo());
         newEmprestimo.setDataDevolucao(emprestimoRequest.getDataDevolucao());
-        emprestimoService.createEmprestimo(newEmprestimo);
+        emprestimoServiceImpl.createEmprestimo(newEmprestimo);
         return ResponseEntity.status(HttpStatus.CREATED).body(newEmprestimo);
     }
 
     @GetMapping
     public ResponseEntity<List<EmprestimoEntity>> getAllEmprestimos(){
-        return ResponseEntity.status(HttpStatus.OK).body(emprestimoService.getAllEmprestimos());
+        return ResponseEntity.status(HttpStatus.OK).body(emprestimoServiceImpl.getAllEmprestimos());
     }
 
     @DeleteMapping("{id}")
     public ResponseEntity<Void> deleteById(@PathVariable Long id) {
-        emprestimoService.deleteById(id);
+        emprestimoServiceImpl.deleteById(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping
+    public ResponseEntity<EmprestimoEntity> updateEmprestimoById(@RequestBody EmprestimoEntity emprestimo){
+        EmprestimoEntity updatedEmprestimo = emprestimoServiceImpl.updateById(emprestimo);
+        return ResponseEntity.status(HttpStatus.OK).body(updatedEmprestimo);
     }
 }

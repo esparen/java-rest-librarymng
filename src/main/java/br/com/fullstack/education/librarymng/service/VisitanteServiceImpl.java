@@ -43,4 +43,16 @@ public class VisitanteServiceImpl implements VisitanteService{
                 )
         );
     }
+
+    @Override
+    public int updateById(VisitanteEntity visitante) {
+        log.info("Atualizando visitante -> \n{}\n", visitante);
+        int updateResponse = visitanteRepository.updateVisitanteEntitiy(
+                visitante.getId(),
+                visitante.getNome(),
+                visitante.getTelefone()
+        );
+
+        return updateResponse;
+    }
 }

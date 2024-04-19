@@ -10,4 +10,6 @@ public interface EmprestimoService {
     List<EmprestimoEntity> getAllEmprestimos();
 
     void deleteById(Long id);
+
+    EmprestimoEntity updateById(EmprestimoEntity emprestimo);
 }

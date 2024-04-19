@@ -35,4 +35,12 @@ public class VisitanteController {
         visitanteService.deleteById(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PutMapping
+    public ResponseEntity updateVisitanteById(@RequestBody VisitanteEntity visitante) {
+        int updatedRecords = visitanteService.updateById(visitante);
+        if (updatedRecords > 0) return ResponseEntity.status(HttpStatus.OK).body(visitante);
+        else
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nenhum registro com id [" + visitante.getId() + "] encontrado");
+    }
 }

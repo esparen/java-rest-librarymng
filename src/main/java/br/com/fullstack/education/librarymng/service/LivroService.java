@@ -11,4 +11,6 @@ public interface LivroService {
     List<LivroEntity> getAllLivros();
 
     void deleteById(Long id);
+
+    LivroEntity updateById(LivroEntity livro);
 }

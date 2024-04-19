@@ -38,4 +38,18 @@ public class EmprestimoServiceImpl implements EmprestimoService {
                 )
         );
     }
+
+    @Override
+    public EmprestimoEntity updateById(EmprestimoEntity emprestimo) {
+        log.info("Atualizando emprestimo -> \n{}\n", emprestimo);
+        int updateResponse = emprestimoRepository.updateEmprestimoEntity(
+                emprestimo.getId(),
+                emprestimo.getLivro(),
+                emprestimo.getMembro(),
+                emprestimo.getDataEmprestimo(),
+                emprestimo.getDataDevolucao()
+        );
+        log.info("Atualizando emprestimo -> Salvo com sucesso");
+        return emprestimo;
+    }
 }
